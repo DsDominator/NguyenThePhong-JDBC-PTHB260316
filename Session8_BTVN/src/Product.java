@@ -5,7 +5,7 @@ class Product {
     private int id;
     private String name;
     private double price;
-    
+
     public static int AUTO_ID = 1;
 
     public final String WAREHOUSE_CODE = "KHO-01";

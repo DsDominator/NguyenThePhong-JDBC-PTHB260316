@@ -1,19 +1,20 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        AttendanceManager manager = new AttendanceManager();
+        OrderManager manager = new OrderManager();
 
         int choice;
 
         do {
-            System.out.println("\n===== QUẢN LÝ ĐIỂM DANH =====");
-            System.out.println("1. Thêm sinh viên");
-            System.out.println("2. Sửa sinh viên");
-            System.out.println("3. Xóa sinh viên");
-            System.out.println("4. Hiển thị danh sách");
+            System.out.println("\n===== QUẢN LÝ ĐƠN HÀNG =====");
+            System.out.println("1. Thêm đơn hàng");
+            System.out.println("2. Sửa đơn hàng");
+            System.out.println("3. Xóa đơn hàng");
+            System.out.println("4. Hiển thị danh sách đơn hàng");
             System.out.println("0. Thoát");
             System.out.print("Nhập lựa chọn: ");
 
@@ -22,10 +23,13 @@ public class Main {
             switch (choice) {
 
                 case 1:
-                    System.out.print("Nhập tên sinh viên: ");
-                    String name = sc.nextLine();
+                    System.out.print("Nhập mã đơn hàng: ");
+                    String orderId = sc.nextLine();
 
-                    manager.add(new Student(name));
+                    System.out.print("Nhập tên khách hàng: ");
+                    String customerName = sc.nextLine();
+
+                    manager.add(new Order(orderId, customerName));
                     break;
 
                 case 2:
@@ -34,10 +38,14 @@ public class Main {
                     System.out.print("Nhập vị trí cần sửa: ");
                     int updateIndex = Integer.parseInt(sc.nextLine());
 
-                    System.out.print("Nhập tên mới: ");
-                    String newName = sc.nextLine();
+                    System.out.print("Nhập mã đơn hàng mới: ");
+                    String newOrderId = sc.nextLine();
 
-                    manager.update(updateIndex, new Student(newName));
+                    System.out.print("Nhập tên khách hàng mới: ");
+                    String newCustomerName = sc.nextLine();
+
+                    manager.update(updateIndex,
+                            new Order(newOrderId, newCustomerName));
                     break;
 
                 case 3:

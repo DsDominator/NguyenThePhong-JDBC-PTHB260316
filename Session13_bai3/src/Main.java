@@ -1,19 +1,20 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        AttendanceManager manager = new AttendanceManager();
+        InvoiceManager manager = new InvoiceManager();
 
         int choice;
 
         do {
-            System.out.println("\n===== QUẢN LÝ ĐIỂM DANH =====");
-            System.out.println("1. Thêm sinh viên");
-            System.out.println("2. Sửa sinh viên");
-            System.out.println("3. Xóa sinh viên");
-            System.out.println("4. Hiển thị danh sách");
+            System.out.println("\n===== QUẢN LÝ HÓA ĐƠN =====");
+            System.out.println("1. Thêm hóa đơn");
+            System.out.println("2. Sửa hóa đơn");
+            System.out.println("3. Xóa hóa đơn");
+            System.out.println("4. Hiển thị danh sách hóa đơn");
             System.out.println("0. Thoát");
             System.out.print("Nhập lựa chọn: ");
 
@@ -22,10 +23,13 @@ public class Main {
             switch (choice) {
 
                 case 1:
-                    System.out.print("Nhập tên sinh viên: ");
-                    String name = sc.nextLine();
+                    System.out.print("Nhập mã hóa đơn: ");
+                    String id = sc.nextLine();
 
-                    manager.add(new Student(name));
+                    System.out.print("Nhập số tiền: ");
+                    double amount = Double.parseDouble(sc.nextLine());
+
+                    manager.add(new Invoice(id, amount));
                     break;
 
                 case 2:
@@ -34,10 +38,13 @@ public class Main {
                     System.out.print("Nhập vị trí cần sửa: ");
                     int updateIndex = Integer.parseInt(sc.nextLine());
 
-                    System.out.print("Nhập tên mới: ");
-                    String newName = sc.nextLine();
+                    System.out.print("Nhập mã hóa đơn mới: ");
+                    String newId = sc.nextLine();
 
-                    manager.update(updateIndex, new Student(newName));
+                    System.out.print("Nhập số tiền mới: ");
+                    double newAmount = Double.parseDouble(sc.nextLine());
+
+                    manager.update(updateIndex, new Invoice(newId, newAmount));
                     break;
 
                 case 3:
